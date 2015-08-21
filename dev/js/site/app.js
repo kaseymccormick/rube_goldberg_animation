@@ -11,9 +11,9 @@ function setupDom(){
   var droplet = graphicDoc.getElementById("droplet");
   var fHanlde = graphicDoc.getElementById("faucet_x5F_handle");
     
-  // TweenMax.to(fHandle, 1, {
- //  skewX:300
- //  });
+  TweenMax.to(fHandle, 1, {
+  skewX:300
+  });
   TweenMax.to(droplet, 1, {
    y: 320,
     x:20,
