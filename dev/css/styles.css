@@ -360,4 +360,8 @@ th {
   fill: blue;
   background-color: red; }
 
+#ovenburner {
+  opacity: 0;
+  background-color: blue; }
+
 /*# sourceMappingURL=styles.css.map */
