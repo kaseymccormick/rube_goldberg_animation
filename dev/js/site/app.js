@@ -14,26 +14,34 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     parachute = graphicDoc.getElementById("parachute");
     bsGear = graphicDoc.getElementById("bsgear")
     
-    bookOne = graphicDoc.getElementById("book_one")
-    bookTwo = graphicDoc.getElementById("book_two")
+    bookOne = graphicDoc.getElementById("bookone")
+    bookTwo = graphicDoc.getElementById("booktwo")
     
     bowlingPin = graphicDoc.getElementById("bowling_pin")
     
     magnet = graphicDoc.getElementById("magnet")
-  
+    
+    bball = graphicDoc.getElementById("ball")
+    fJacks = graphicDoc.querySelectorAll("#jacks")
+    sJacks = graphicDoc.querySelectorAll("#morej")
+    tJacks = graphicDoc.querySelectorAll("#lastj")
+    
   //------------------------------------------
   //    Animations
   //--------------------------------------------
   //handle and water droplet change repeats to -1
+
+    
   TweenMax.to(fHandle, 5, { repeat: 10, rotationY: 360, transformOrigin: "50% 50%", onComplete: console.log("Handle moved") });
   TweenMax.to(droplet, 1.5, { delay:5, y: 320, x:20, ease: Power1.easeInOut, repeat: 10, fill:"blue", onComplete: console.log("complete") });
+
   
   
   TweenMax.to(magnet, 1, {repeat:10, x:5})
  //burner and steam
   TweenMax.to(burner, 3, {delay:6,repeat:3, fill:"red", yoyo: true, onComplete: startParachute});
   
-  TweenMax.to(bowlingPin, 1,{rotation:3, transoformOrigin: "100% 100%"})
+  TweenMax.to(bowlingPin, 1,{rotation:3, transoformOrigin: "100% 100%"});
 }
 function startParachute(){
   // //parachute\    delay:15,
@@ -66,3 +74,9 @@ function startBook2(){
 //   var tl = new TimlineMax();
 //   tl.from(bowlingPin, 2,{rotation:40, transformOrigin:"100% 100%", yoyo: false });
 // }
+function jacksGame(){
+    TweenLite.to(bball, 2, { fill:"red", ease: Bounce.easeOut, y: 100 });
+    TweenLite.to(fJacks, .5, { fill:"blue", y:100,ease: Power0.easeInOut});
+    TweenLite.to(sJacks, .5, { fill:"blue", y:100, x:25, ease: Power0.easeInOut});
+    TweenLite.to(tJacks, .5, { fill:"blue", y:100, x:-100, ease: Power0.easeInOut});
+  }
