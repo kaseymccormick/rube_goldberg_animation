@@ -21,6 +21,9 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     
     magnet = graphicDoc.getElementById("magnet")
     
+    hook =graphicDoc.getElementById("hook")
+    bag = graphicDoc.getElementById("bag")
+    
     bball = graphicDoc.getElementById("ball")
     fJacks = graphicDoc.querySelectorAll("#jacks")
     sJacks = graphicDoc.querySelectorAll("#morej")
@@ -30,6 +33,8 @@ var graphic = document.getElementsByClassName('the_machine')[0];
   //    Animations
   //--------------------------------------------
   //handle and water droplet change repeats to -1
+    TweenLite.to(bag, 1, {y:-440});
+    TweenLite.to(hook, 1, {y:-440});
 
     
   TweenMax.to(fHandle, 5, { repeat: 10, rotationY: 360, transformOrigin: "50% 50%", onComplete: console.log("Handle moved") });
@@ -74,6 +79,9 @@ function startBook2(){
 //   var tl = new TimlineMax();
 //   tl.from(bowlingPin, 2,{rotation:40, transformOrigin:"100% 100%", yoyo: false });
 // }
+function bagLift(){
+  TwweenLight.to(bag, 1, {y:-100})
+}
 function jacksGame(){
     TweenLite.to(bball, 2, { fill:"red", ease: Bounce.easeOut, y: 100 });
     TweenLite.to(fJacks, .5, { fill:"blue", y:100,ease: Power0.easeInOut});
