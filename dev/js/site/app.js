@@ -13,6 +13,13 @@ var graphic = document.getElementsByClassName('the_machine')[0];
 
     parachute = graphicDoc.getElementById("parachute");
     bsGear = graphicDoc.getElementById("bsgear")
+    
+    bookOne = graphicDoc.getElementById("book_one")
+    bookTwo = graphicDoc.getElementById("book_two")
+    
+    bowlingPin = graphicDoc.getElementById("bowling_pin")
+    
+    magnet = graphicDoc.getElementById("magnet")
   
   //------------------------------------------
   //    Animations
@@ -21,8 +28,12 @@ var graphic = document.getElementsByClassName('the_machine')[0];
   TweenMax.to(fHandle, 5, { repeat: 10, rotationY: 360, transformOrigin: "50% 50%", onComplete: console.log("Handle moved") });
   TweenMax.to(droplet, 1.5, { delay:5, y: 320, x:20, ease: Power1.easeInOut, repeat: 10, fill:"blue", onComplete: console.log("complete") });
   
+  
+  TweenMax.to(magnet, 1, {repeat:10, x:5})
  //burner and steam
   TweenMax.to(burner, 3, {delay:6,repeat:3, fill:"red", yoyo: true, onComplete: startParachute});
+  
+  TweenMax.to(bowlingPin, 1,{rotation:3, transoformOrigin: "100% 100%"})
 }
 function startParachute(){
   // //parachute\    delay:15,
@@ -39,11 +50,19 @@ function startParachute(){
  //  TweenMax.from(car, 1, {x: 200});
 
 function startGear(){
-  // var graphic = document.getElementsByClassName('the_machine')[0];
-  //
-  // var graphicDoc = graphic.contentDocument;
-  // var bsGear = graphicDoc.getElementById("bsgear")
- TweenMax.to(bsGear, 2, {rotation:360, transformOrigin:"50% 50%", x: 100, ease: Power0.easeNone});
-  
-  
+   TweenMax.to(bsGear, 2, {rotation:360, transformOrigin:"50% 50%", x: 100, ease: Power0.easeNone,  onComplete: startBook});
 }
+
+function startBook(){
+  TweenMax.to(bookOne, 2, {rotation:70, transformOrigin:"100% 100%", x: 1, ease: Power0.easeNone, onComplete: startBook2});
+}
+
+function startBook2(){
+  var tl = new TimelineLite();
+  tl.to(bookTwo, 2, {rotation: 55,x:-1, transformOrigin:"100% 100%"});
+}
+
+// function startPin(){
+//   var tl = new TimlineMax();
+//   tl.from(bowlingPin, 2,{rotation:40, transformOrigin:"100% 100%", yoyo: false });
+// }
