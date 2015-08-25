@@ -35,7 +35,7 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     
     chair = graphicDoc.getElementById("office_chair")
     
-    dolly = graphicDoc.getElementById("dolly")
+    dolly = graphicDoc.getElementById("dollyBox")
     
     box = graphicDoc.getElementById("box")
     boxFlap = graphicDoc.getElementById("box_flap_open")
@@ -44,10 +44,7 @@ var graphic = document.getElementsByClassName('the_machine')[0];
   //------------------------------------------
   //    Animations
   //--------------------------------------------
-  //handle and water droplet change repeats to -1
-
-    
-  TweenMax.to(fHandle, 5, { onStart: startSteam, repeat: 10, rotationY: 360, transformOrigin: "50% 50%", onComplete: console.log("Handle moved") });
+  TweenMax.to(fHandle, 5, { onStart: dollyMove, repeat: -1, rotationY: 360, transformOrigin: "50% 50%", onComplete: console.log("Handle moved") });
   TweenMax.to(droplet, 1.5, { delay:5, y: 320, x:20, ease: Power1.easeInOut, repeat: -1, fill:"blue", onComplete: console.log("complete") });
 
   // TweenLite.to(boxFlap, 1, {transoformOrigin: "50% 50%", skewy:45});
@@ -56,7 +53,10 @@ var graphic = document.getElementsByClassName('the_machine')[0];
 
   // TweenMax.to(box, 1, {repeat:1, rotation:30, x:-35, y:35, transformOrigin:"50% 50%", yoyo:true});
 
-  TweenMax.to(dolly, 1, {repeat:1 , rotation:30, transformOrigin:"50% 50%", yoyo:true});
+
+  // TweenMax.from(dolly, 1, {repeat:1 , rotation:30, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone,});
+  // TweenMax.to(dolly, 1, {repeat:1 , rotation:-35, transformOrigin:"50% 100%", yoyo:true, ease: Power0.easeNone});
+
 
   // TweenMax.to(dolly, 1, {repeat:1 , y:10, transformOrigin:"100% 100%", yoyo:true});
  
@@ -66,21 +66,32 @@ var graphic = document.getElementsByClassName('the_machine')[0];
  TweenLite.to(magnet, 1, {delay:1,rotation:-40,y:600});
  TweenLite.to(magnet, 1, {delay:1.5, rotation:-90})
  
-  TweenMax.to(burner, 3, {delay:6,repeat:-1, fill:"red", yoyo: true});
+  TweenMax.to(burner, 3, {delay:2,repeat:-1, fill:"red", yoyo: true});
   
   TweenMax.to(bPin, .5,{repeat:2, rotation:2, transoformOrigin: "50% 50%", skewy:45, yoyo: true,ease: Power0.easeNone});
 }
 
+function dollyMove(){
+  var tl = new TimelineMax({ onComplete: console.log("done")});
+
+  //banner animation code (only 11 lines)
+
+   tl.from(dolly, 0.5, {repeat:1 , rotation:30, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone,})
+     .to(dolly, 1, {repeat:1 , rotation:-35, transformOrigin:"50% 50%", y:20, yoyo:true, ease: Power0.easeNone})
+     .to(dolly, 1, { rotation:50, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone});
+  
+  
+}
+
 function startSteam(){
-     //increase repeat
+     //increase repeat?
       var tl = new TimelineMax({repeat: 1, onComplete: startParachute});
 
-      tl.to(steam, 3, { delay:9, y:-160, x:55,opacity:0, scale: 4, ease: Power1.easeInOut})
+      tl.to(steam, 3, { delay:9, y:-160, x:55,opacity:0, scale: 4, ease: Power1.easeInOut});
 
 }
 
 function startParachute(){
-  // //parachute\    delay:15,
   TweenMax.to(parachute, 10, {  y: -208, x:245, ease: Power1.easeInOut, onComplete: startGear });
  }  
 
@@ -89,25 +100,22 @@ function startGear(){
 }
 
 function startBook(){
-  TweenMax.to(bookOne, 2, {rotation:70, transformOrigin:"100% 100%", x: 1, ease: Power0.easeNone, onComplete: startBook2});
+  TweenMax.to(bookOne, 1, {rotation:70, transformOrigin:"100% 100%", x: 1, ease: Power0.easeNone, onComplete: startBook2});
 }
 
 function startBook2(){
   var tl = new TimelineLite();
-  tl.to(bookTwo, 2, {rotation: 55,x:-1, transformOrigin:"100% 100%",onComplete: bagLift});
+  tl.to(bookTwo, 1, {rotation: 55,x:-1, transformOrigin:"100% 100%",onComplete: bagLift});
 }
 
 // function startPin(){
 //   var tl = new TimlineMax();
 //   tl.from(bowlingPin, 2,{rotation:40, transformOrigin:"100% 100%", yoyo: false });
 // }
-function moveMagnet(){
-  var tl = new TimlineMax();
-  tl.to(magnet, 2,{x: 20 });
-}
+
 
 function bagLift(){
-  TweenMax.to(largeGear, 4, {rotation:360, transformOrigin:"50% 50%"})
+  TweenMax.to(largeGear, 4, {rotation:360, transformOrigin:"50% 50%"});
   TweenMax.to(smallGear, 4, {rotation:-360, transformOrigin:"50% 50%"});
   
   TweenLite.to(bag, 1, {y:-440});
