@@ -35,6 +35,8 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     
     chair = graphicDoc.getElementById("office_chair")
     
+    boxFlap = graphicDoc.getElementById("box_flap_open")
+    
   //------------------------------------------
   //    Animations
   //--------------------------------------------
@@ -44,7 +46,11 @@ var graphic = document.getElementsByClassName('the_machine')[0];
   TweenMax.to(fHandle, 5, { onStart: startSteam, repeat: 10, rotationY: 360, transformOrigin: "50% 50%", onComplete: console.log("Handle moved") });
   TweenMax.to(droplet, 1.5, { delay:5, y: 320, x:20, ease: Power1.easeInOut, repeat: -1, fill:"blue", onComplete: console.log("complete") });
 
-  
+  // TweenLite.to(boxFlap, 1, {transoformOrigin: "50% 50%", skewy:45});
+  TweenLite.to(boxFlap, 1, {rotation:-30,transformOrigin:"0% 100%"});
+  // TweenLite.to(boxFlap, 1, {fill:"blue"});
+
+
   
  TweenLite.to(magnet, 1, {rotation:10,x:100});
  TweenLite.to(magnet, 1, {delay:1,rotation:-40,y:600});
