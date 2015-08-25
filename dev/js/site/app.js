@@ -48,10 +48,9 @@ var graphic = document.getElementsByClassName('the_machine')[0];
   TweenMax.to(droplet, 1.5, { delay:5, y: 320, x:20, ease: Power1.easeInOut, repeat: -1, fill:"blue", onComplete: console.log("complete") });
 
   // TweenLite.to(boxFlap, 1, {transoformOrigin: "50% 50%", skewy:45});
-  TweenLite.to(boxFlap, 1, {rotation:-30,transformOrigin:"0% 100%"});
   // TweenLite.to(boxFlap, 1, {fill:"blue"});
 
-  // TweenMax.to(box, 1, {repeat:1, rotation:30, x:-35, y:35, transformOrigin:"50% 50%", yoyo:true});
+
 
 
   // TweenMax.from(dolly, 1, {repeat:1 , rotation:30, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone,});
@@ -72,14 +71,13 @@ var graphic = document.getElementsByClassName('the_machine')[0];
 }
 
 function dollyMove(){
-  var tl = new TimelineMax({ onComplete: console.log("done")});
-
-  //banner animation code (only 11 lines)
+  var tl = new TimelineMax({ onComplete: console.log(" Dolly done")});
 
    tl.from(dolly, 0.5, {repeat:1 , rotation:30, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone,})
      .to(dolly, 1, {repeat:1 , rotation:-35, transformOrigin:"50% 50%", y:20, yoyo:true, ease: Power0.easeNone})
-     .to(dolly, 1, { rotation:50, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone});
-  
+     .to(dolly, 1, { rotation:50, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone})
+  .to(box, 1, {rotation:90, x:80, y:-100, transformOrigin: "50% 50%"})
+     .to(boxFlap, 1, {rotation:-30,transformOrigin:"0% 100%"});
   
 }
 
