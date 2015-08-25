@@ -9,7 +9,7 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     droplet = graphicDoc.getElementById("droplet");
 
     burner = graphicDoc.getElementById("ovenburner");
-    steam = graphicDoc.getElementById("steam_cloud");
+    steam = graphicDoc.getElementById("steamCloud");
 
     parachute = graphicDoc.getElementById("parachute");
     bsGear = graphicDoc.getElementById("bsgear")
@@ -17,9 +17,13 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     bookOne = graphicDoc.getElementById("bookone")
     bookTwo = graphicDoc.getElementById("booktwo")
     
-    bowlingPin = graphicDoc.getElementById("bowling_pin")
+    bPin = graphicDoc.getElementById("bowling_pin")
     
     magnet = graphicDoc.getElementById("magnet")
+    
+    smallGear = graphicDoc.getElementById("small_gear_pully")
+    largeGear = graphicDoc.getElementById("large_gear_pully")
+    
     
     hook =graphicDoc.getElementById("hook")
     bag = graphicDoc.getElementById("bag")
@@ -29,6 +33,8 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     sJacks = graphicDoc.querySelectorAll("#morej")
     tJacks = graphicDoc.querySelectorAll("#lastj")
     
+    chair = graphicDoc.getElementById("office_chair")
+    
   //------------------------------------------
   //    Animations
   //--------------------------------------------
@@ -36,25 +42,27 @@ var graphic = document.getElementsByClassName('the_machine')[0];
 
     
   TweenMax.to(fHandle, 5, { onStart: startSteam, repeat: 10, rotationY: 360, transformOrigin: "50% 50%", onComplete: console.log("Handle moved") });
-  TweenMax.to(droplet, 1.5, { delay:5, y: 320, x:20, ease: Power1.easeInOut, repeat: 10, fill:"blue", onComplete: console.log("complete") });
+  TweenMax.to(droplet, 1.5, { delay:5, y: 320, x:20, ease: Power1.easeInOut, repeat: -1, fill:"blue", onComplete: console.log("complete") });
 
   
   
-  TweenMax.to(magnet, 1, {repeat:10, x:5})
- //burner and steam
-  TweenMax.to(burner, 3, {delay:6,repeat:3, fill:"red", yoyo: true, onComplete: startSteam});
+ TweenLite.to(magnet, 1, {rotation:10,x:100});
+ TweenLite.to(magnet, 1, {delay:1,rotation:-40,y:600});
+ TweenLite.to(magnet, 1, {delay:1.5, rotation:-90})
+ 
+  TweenMax.to(burner, 3, {delay:6,repeat:-1, fill:"red", yoyo: true});
   
-  TweenMax.to(bowlingPin, 1,{rotation:3, transoformOrigin: "100% 100%"});
+  TweenMax.to(bPin, .5,{repeat:2, rotation:2, transoformOrigin: "50% 50%", skewy:45, yoyo: true,ease: Power0.easeNone});
 }
+
 function startSteam(){
-     
-      var tl = new TimelineMax({repeat: 5});
+     //increase repeat
+      var tl = new TimelineMax({repeat: 1, onComplete: startParachute});
 
-      tl.to(steam, 3, { y:-100, x:60, ease: Power1.easeInOut})
-      .to(steam, 1, {scale: 1.2, ease: Back.easeOut.config(1.7)})
-      // .to(steam,.3, {scale: 1, ease: Power0.easeNone});
+      tl.to(steam, 3, { delay:9, y:-160, x:55,opacity:0, scale: 4, ease: Power1.easeInOut})
 
 }
+
 function startParachute(){
   // //parachute\    delay:15,
   TweenMax.to(parachute, 10, {  y: -208, x:245, ease: Power1.easeInOut, onComplete: startGear });
@@ -77,13 +85,24 @@ function startBook2(){
 //   var tl = new TimlineMax();
 //   tl.from(bowlingPin, 2,{rotation:40, transformOrigin:"100% 100%", yoyo: false });
 // }
+function moveMagnet(){
+  var tl = new TimlineMax();
+  tl.to(magnet, 2,{x: 20 });
+}
+
 function bagLift(){
+  TweenMax.to(largeGear, 4, {rotation:360, transformOrigin:"50% 50%"})
+  TweenMax.to(smallGear, 4, {rotation:-360, transformOrigin:"50% 50%"});
+  
   TweenLite.to(bag, 1, {y:-440});
   TweenLite.to(hook, 1, {y:-440, onComplete: jacksGame});
 }
 function jacksGame(){
-    TweenLite.to(bball, 2, { fill:"red", ease: Bounce.easeOut, y: 100 });
-    TweenLite.to(fJacks, .5, { fill:"blue", y:100,ease: Power0.easeInOut});
-    TweenLite.to(sJacks, .5, { fill:"blue", y:100, x:25, ease: Power0.easeInOut});
-    TweenLite.to(tJacks, .5, { fill:"blue", y:100, x:-100, ease: Power0.easeInOut});
-  }
+    TweenLite.to(bball, 6, {  ease: Bounce.easeOut, y: 500 });
+    TweenLite.to(fJacks, .5, { fill:"blue", y:500,ease: Power0.easeInOut});
+    TweenLite.to(sJacks, .5, { fill:"blue", y:500, x:25, ease: Power0.easeInOut});
+    TweenLite.to(tJacks, .5, { fill:"blue", y:500, x:-100, ease: Power0.easeInOut, onComplete: chairMove});
+}
+function chairMove(){
+   TweenLite.to(chair, 1, {x:-400});
+}

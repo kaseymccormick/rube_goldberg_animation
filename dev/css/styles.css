@@ -364,4 +364,13 @@ th {
   opacity: 0;
   fill: blue; }
 
+#steamCloud {
+  fill: blue; }
+
+#jacks, #morej, #lastj, #ball {
+  opacity: 0; }
+
+#ball {
+  fill: red; }
+
 /*# sourceMappingURL=styles.css.map */
