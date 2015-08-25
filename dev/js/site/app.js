@@ -35,7 +35,11 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     
     chair = graphicDoc.getElementById("office_chair")
     
+    dolly = graphicDoc.getElementById("dolly")
+    
+    box = graphicDoc.getElementById("box")
     boxFlap = graphicDoc.getElementById("box_flap_open")
+    
     
   //------------------------------------------
   //    Animations
@@ -50,8 +54,14 @@ var graphic = document.getElementsByClassName('the_machine')[0];
   TweenLite.to(boxFlap, 1, {rotation:-30,transformOrigin:"0% 100%"});
   // TweenLite.to(boxFlap, 1, {fill:"blue"});
 
+  // TweenMax.to(box, 1, {repeat:1, rotation:30, x:-35, y:35, transformOrigin:"50% 50%", yoyo:true});
 
-  
+  TweenMax.to(dolly, 1, {repeat:1 , rotation:30, transformOrigin:"50% 50%", yoyo:true});
+
+  // TweenMax.to(dolly, 1, {repeat:1 , y:10, transformOrigin:"100% 100%", yoyo:true});
+ 
+ 
+ 
  TweenLite.to(magnet, 1, {rotation:10,x:100});
  TweenLite.to(magnet, 1, {delay:1,rotation:-40,y:600});
  TweenLite.to(magnet, 1, {delay:1.5, rotation:-90})
