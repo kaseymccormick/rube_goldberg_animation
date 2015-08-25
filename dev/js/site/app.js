@@ -39,7 +39,7 @@ var graphic = document.getElementsByClassName('the_machine')[0];
     
     box = graphicDoc.getElementById("box")
     boxFlap = graphicDoc.getElementById("box_flap_open")
-    
+    cursor = graphicDoc.getElementById("cursor")
     
   //------------------------------------------
   //    Animations
@@ -61,6 +61,7 @@ var graphic = document.getElementsByClassName('the_machine')[0];
  
  
  
+ 
  TweenLite.to(magnet, 1, {rotation:10,x:100});
  TweenLite.to(magnet, 1, {delay:1,rotation:-40,y:600});
  TweenLite.to(magnet, 1, {delay:1.5, rotation:-90})
@@ -74,10 +75,14 @@ function dollyMove(){
   var tl = new TimelineMax({ onComplete: console.log(" Dolly done")});
 
    tl.from(dolly, 0.5, {repeat:1 , rotation:30, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone,})
-     .to(dolly, 1, {repeat:1 , rotation:-35, transformOrigin:"50% 50%", y:20, yoyo:true, ease: Power0.easeNone})
-     .to(dolly, 1, { rotation:50, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone})
-  .to(box, 1, {rotation:90, x:80, y:-100, transformOrigin: "50% 50%"})
-     .to(boxFlap, 1, {rotation:-30,transformOrigin:"0% 100%"});
+     .to(dolly, .5, {repeat:1 , rotation:-35, transformOrigin:"50% 50%", y:20, yoyo:true, ease: Power0.easeNone})
+     .to(dolly, .5, { rotation:50, transformOrigin:"50% 50%", yoyo:true, ease: Power0.easeNone})
+     .to(box, 1, {rotation:90, x:80, y:-100, transformOrigin: "50% 50%"})
+     .to(boxFlap, 1, {rotation:-30,transformOrigin:"0% 100%"})
+     .to(cursor,1, { rotation:180, x:60, y:60})
+     .to(cursor,1, { rotation:180, y:260})
+     .to(cursor,1, { rotation:280, transfomOrigin:"50% 50%"})
+     .to(cursor,1, { x:-260});
   
 }
 
