@@ -1,19 +1,6 @@
-# Front-End Project Boilerplate
+# Rube Goldberg Animation
 
-**v1.0.0**
-
-This repository is meant to serve as a starting point for front-end projects. 
-It has a sensible file/folder structure and can easily be changed to suit a
-particular project's needs.
-
-As with WordPress, Ruby on Rails, or Sinatra, the files you see here are not the same
-files that are served as the response to a Web request. Rather, the files you
-see here comprise the _framework_. When you run the server, the HTML/CSS/JavaScript
-files that will be served are generated.
-
-To access the generated files, you will navigate to http://localhost:8889.
-
-### Getting Started
+### Animation Boiler Plate Getting Started
 
 1. [Fork](https://github.com/omahacodeschool/project-boilerplate#fork-destination-box) this project.
 2. Rename your Fork to something like "2015-08-10-my-pet-store".
